@@ -19,6 +19,8 @@ public class BowlingBall : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J))
         {
             gameObject.transform.parent = null;
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward);
         }
     }
 }

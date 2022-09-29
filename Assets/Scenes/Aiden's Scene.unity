@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571336, b: 0.3069219, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1641,33 +1641,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bowling Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 1850480107761510497, guid: 8271a7d1002de425b98e6a14be3a1f5d, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5349977004829145084, guid: 8271a7d1002de425b98e6a14be3a1f5d, type: 3}
       propertyPath: m_RootOrder
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5349977004829145084, guid: 8271a7d1002de425b98e6a14be3a1f5d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5349977004829145084, guid: 8271a7d1002de425b98e6a14be3a1f5d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 99.99996
-      objectReference: {fileID: 0}
-    - target: {fileID: 5349977004829145084, guid: 8271a7d1002de425b98e6a14be3a1f5d, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 99.99995
-      objectReference: {fileID: 0}
-    - target: {fileID: 5349977004829145084, guid: 8271a7d1002de425b98e6a14be3a1f5d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.099832326
+      value: 0.237
       objectReference: {fileID: 0}
     - target: {fileID: 5349977004829145084, guid: 8271a7d1002de425b98e6a14be3a1f5d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.21374452
+      value: -0.091
       objectReference: {fileID: 0}
     - target: {fileID: 5349977004829145084, guid: 8271a7d1002de425b98e6a14be3a1f5d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.31643584
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5349977004829145084, guid: 8271a7d1002de425b98e6a14be3a1f5d, type: 3}
       propertyPath: m_LocalRotation.w
