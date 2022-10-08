@@ -45,9 +45,10 @@ public class Score : MonoBehaviour {
             ball.gameObject.GetComponent<Rigidbody>().isKinematic = false;
             ball.gameObject.GetComponent<Rigidbody>().useGravity = true;
             Debug.Log("respawnPosition" + respawnPosition.position);
-            Instantiate(ball,  respawnPosition.position, Quaternion.identity);
+            var newobj = Instantiate(ball,  respawnPosition.position, Quaternion.identity);
             Destroy(ball);
-            
+            ball = newobj;
+
         }
 
          
@@ -60,10 +61,10 @@ public class Score : MonoBehaviour {
     void Update() {
         for (int i = 0; i < 10; i++) {
             GameObject pin = pins[i];
-            if (pin.transform.rotation.x > -0.01 
-                && pin.transform.rotation.x < 0.01 
-                && pin.transform.rotation.z < 0.01
-                && pin.transform.rotation.z > -0.01) {
+            if (pin.transform.rotation.x > -0.1 
+                && pin.transform.rotation.x < 0.1 
+                && pin.transform.rotation.z < 0.1
+                && pin.transform.rotation.z > -0.1) {
                 //pin is standing up (do nothing)
                 states[i] = false;
             }
