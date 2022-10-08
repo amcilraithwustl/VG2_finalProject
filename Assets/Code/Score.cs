@@ -36,7 +36,7 @@ public class Score : MonoBehaviour {
         if (shots <= 0) {
             _textMeshPro.text = "score: " + score;
 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+           // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         else {
             _textMeshPro.text = "score: " + score + " shots left: " + shots;
