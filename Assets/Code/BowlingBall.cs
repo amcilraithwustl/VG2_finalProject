@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,12 +20,15 @@ public class BowlingBall : MonoBehaviour
 
     // Update is called once per frame
     
-     void OnCollisionEnter(Collision other) {
+  
 
-        if (other.gameObject.tag == "pins") {
-            s.takeOneShot();
-
-        }
+     private void OnTriggerEnter(Collider other)
+     {
+         print("TIRGGER");
+         if (!hasReleased && other.gameObject.CompareTag("scorezone")) {
+             print("TAKING THE SHOT");
+             s.takeOneShot();
+             hasReleased = true;
+         }
      }
-
 }

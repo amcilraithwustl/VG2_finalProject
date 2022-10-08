@@ -19,6 +19,7 @@ public class Score : MonoBehaviour {
     }
 
     public int takeOneShot() {
+        print("TAKING THE SHOT PART 2: " + shots);
         --shots;
         StartCoroutine(Wait());
         return shots;
@@ -36,13 +37,16 @@ public class Score : MonoBehaviour {
         if (shots <= 0) {
             _textMeshPro.text = "score: " + score;
 
-           // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+           SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         else {
             _textMeshPro.text = "score: " + score + " shots left: " + shots;
+            ball.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            ball.gameObject.GetComponent<Rigidbody>().useGravity = true;
             Debug.Log("respawnPosition" + respawnPosition.position);
-            Instantiate(ball,  respawnPosition.position, Quaternion.identity, respawnPosition);
-            //Destroy(ball);
+            Instantiate(ball,  respawnPosition.position, Quaternion.identity);
+            Destroy(ball);
+            
         }
 
          
