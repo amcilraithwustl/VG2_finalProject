@@ -18,24 +18,11 @@ public class BowlingBall : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.J) && !hasReleased)
-        {
-            gameObject.transform.parent = null;
-            hasReleased = true;
-            
-            gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            gameObject.GetComponent<Rigidbody>().velocity =new Vector3(-1,0,0) * 40;
-            gameObject.GetComponent<Rigidbody>().rotation = Quaternion.Euler(100, 0, 0);
-
-            s.takeOneShot();
-        }
-
-    }
+    
      void OnCollisionEnter(Collision other) {
 
         if (other.gameObject.tag == "pins") {
+            s.takeOneShot();
 
         }
      }
