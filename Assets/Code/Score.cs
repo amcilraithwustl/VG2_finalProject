@@ -10,7 +10,8 @@ public class Score : MonoBehaviour {
     public GameObject ball;
     public Transform respawnPosition;
     public TMP_Text _textMeshPro;
-    
+    public float timeout = 3.0f;
+        
     private bool[] states = new bool[10];
     private int score = 0;
     public int shots = 2;
@@ -30,7 +31,7 @@ public class Score : MonoBehaviour {
     }
     
     public IEnumerator Wait(){
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(timeout);
          
 
         Debug.Log("shots left " + shots);
