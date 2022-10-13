@@ -8,7 +8,7 @@ public class Bowlable : MonoBehaviour
 {
     private XRGrabInteractable grabScript;
 
-    public bool isGrabbable;
+    public bool isGrabbable = true;
 
     // Start is called before the first frame update
     void Start()
@@ -26,5 +26,6 @@ public class Bowlable : MonoBehaviour
     {
         isGrabbable = state;
     }
+    
 
 }

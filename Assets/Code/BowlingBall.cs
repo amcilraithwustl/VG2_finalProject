@@ -8,11 +8,11 @@ public class BowlingBall : MonoBehaviour
     //public Rigidbody rb;
     private bool hasReleased = false;
     //public bool collided = false;
-    private Score s;
+    private GameController s;
 
     void Start()
     {
-        s = GameObject.FindObjectOfType(typeof(Score)) as Score;
+        s = GameObject.FindObjectOfType(typeof(GameController)) as GameController;
         //testing to make sure it rolls
         //rb = GetComponent<Rigidbody>();
         //rb.velocity = new Vector3 ( 2, 0, 0 );
@@ -27,7 +27,7 @@ public class BowlingBall : MonoBehaviour
          print("TIRGGER");
          if (!hasReleased && other.gameObject.CompareTag("scorezone")) {
              print("TAKING THE SHOT");
-             s.takeOneShot();
+             s.WaitForThrow(this.gameObject);
              hasReleased = true;
          }
      }
