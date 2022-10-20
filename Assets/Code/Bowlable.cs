@@ -25,6 +25,7 @@ public class Bowlable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Check if the tier is enabled (if relevant)
         var unlocked = !hasTier || tier <= GameController.Instance.currentTier;
         grabScript.enabled = isGrabbable && unlocked;
     }
