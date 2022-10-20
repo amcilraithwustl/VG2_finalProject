@@ -48,7 +48,7 @@ public class GameController : MonoBehaviour
         int tier = Int32.MaxValue;
         foreach (var bowlable in objs)
         {
-            if (tier > bowlable.tier)
+            if (bowlable.hasTier && tier > bowlable.tier)
             {
                 tier = bowlable.tier;
             }

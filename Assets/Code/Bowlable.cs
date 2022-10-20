@@ -9,8 +9,10 @@ public class Bowlable : MonoBehaviour
     private XRGrabInteractable grabScript;
 
     public bool isGrabbable = true;
+    public bool hasTier = true;
 
     public int tier = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +22,12 @@ public class Bowlable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        grabScript.enabled = isGrabbable && tier <= GameController.Instance.currentTier;
+        var unlocked = !hasTier || tier <= GameController.Instance.currentTier;
+        grabScript.enabled = isGrabbable && unlocked;
     }
 
     public void setGrabbable(bool state)
     {
         isGrabbable = state;
     }
-    
-
 }
