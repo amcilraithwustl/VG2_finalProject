@@ -190,7 +190,6 @@ public class GameController : MonoBehaviour
        // resetPins();
 
         //Update current tier
-        updateTier();
     }
 
     private void Start()
@@ -204,6 +203,8 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        updateTier();
+
         //Debug.Log(score);
         //_textMeshPro.text = "score: " + score;
     }
