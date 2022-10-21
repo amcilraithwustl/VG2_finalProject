@@ -75,10 +75,15 @@ public class GameController : MonoBehaviour
             Destroy(t);
         }
 
-        pins.Clear();        
+        pins.Clear();
 
-        var childPositions = pinPosition.GetComponentsInChildren<Transform>();
-        print("RESETTING PINS" + childPositions.Length);
+
+        List<Transform> childPositions = new();
+        for (int i = 0; i < pinPosition.transform.childCount; i++)
+        {
+            childPositions.Add(pinPosition.transform.GetChild(i));
+        }
+        print("RESETTING PINS" + childPositions.Count);
         foreach (var t in childPositions)
         {
             pins.Add(Instantiate(pinPrefab, t));
@@ -134,7 +139,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            _textMeshPro.text = "score: " + totalScore + " shots left: " + shots;
+            _textMeshPro.text = "SingleGameScore" + getSingleGameScore()  + " shots left: " + shots;
         }
     }
 
@@ -172,15 +177,17 @@ public class GameController : MonoBehaviour
         
         print("#pins" + pins.Count);
         //conditionally reset pins (or destroy old ones)
-        /*if (shots == 0 || 10 - numPinsFallen() == 0)
+        if (shots == 0 || pins.Count == numPinsFallen())
         {
             resetPins();
+            shots = 2;//TODO: Remove magic number
         }
         else
         {
             removeDownPins();
-        }*/
-        removeDownPins();
+        }
+       // removeDownPins();
+       // resetPins();
 
         //Update current tier
         updateTier();
