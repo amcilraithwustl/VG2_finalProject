@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
     // Maybe use transforms to mark spawn position?
     public GameObject[] pins;
     public GameObject pinPrefab;
+    public Transform pinRespawnPosition;
+    
     public TMP_Text _textMeshPro;
     public float timeout = 3.0f;
     
@@ -16,6 +18,9 @@ public class GameController : MonoBehaviour
     private bool[] states = new bool[10];
     private int totalScore = 0;
     public int shots = 2;
+
+
+    //public Pins p;
     
     public int getShots() {
         return shots;
@@ -23,7 +28,9 @@ public class GameController : MonoBehaviour
 
     void resetPins()
     {
-        Debug.Log("PINS RESET");
+        var newPins= Instantiate(pinPrefab,  pinRespawnPosition.position, Quaternion.identity);
+        pinPrefab = newPins;
+        
     }
 
     void updateScore()
@@ -38,7 +45,7 @@ public class GameController : MonoBehaviour
 
     void removeDownPins()
     {
-        print("REMOVING DOWNED PINS");
+        Destroy(pinPrefab);
     }
     void destroyThrown(GameObject ball)
     {
@@ -52,30 +59,7 @@ public class GameController : MonoBehaviour
 
     public int numPinsRemaining()
     {
-        //TODO: Improving counting left be a call function for each pin
-        for (int i = 0; i < 10; i++) {
-            GameObject pin = pins[i];
-            if (pin.transform.rotation.x > -0.1 
-                && pin.transform.rotation.x < 0.1 
-                && pin.transform.rotation.z < 0.1
-                && pin.transform.rotation.z > -0.1) {
-                //pin is standing up (do nothing)
-                states[i] = true;
-            }
-            else {
-                //pin is knocked over
-                states[i] = false;
-            }
-        }
-        var pinsleft = 0;
-        for (int i = 0; i < 10; i++) {
-            //Debug.Log(i + "&&&&" + states[i]);
-
-            if (states[i]) {
-                pinsleft++;
-            }
-        }
-        return pinsleft;
+        return 0;
     }
     public int getScore()
     {

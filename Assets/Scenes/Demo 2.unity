@@ -13418,6 +13418,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grabbable
       objectReference: {fileID: 0}
+    - target: {fileID: 4685438089444560773, guid: ac1083e94bbccfc44a0654474501730d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4685438089444560778, guid: ac1083e94bbccfc44a0654474501730d,
         type: 3}
       propertyPath: m_InteractionManager
