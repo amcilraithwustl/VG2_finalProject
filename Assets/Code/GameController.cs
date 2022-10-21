@@ -1,7 +1,12 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
+using Unity.XR.CoreUtils;
 using UnityEngine.ProBuilder;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
@@ -9,19 +14,14 @@ using UnityEngine.Tilemaps;
 public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
-
-
-    //TODO: make this a prefab rather than direct reference.
-    // Maybe use transforms to mark spawn position?
-    public GameObject[] pins;
     public GameObject pinPrefab;
-    public Transform pinRespawnPosition;
+    [NotNull] public GameObject pinPosition;
     
     public TMP_Text _textMeshPro;
     public float timeout = 3.0f;
 
     //TODO: outdated. Do during update?
-    private bool[] states = new bool[10];
+    private List<GameObject> pins = new();
     private int totalScore = 0;
     public int shots = 2;
 
@@ -52,12 +52,14 @@ public class GameController : MonoBehaviour
         {
             if (bowlable.hasTier && tier > bowlable.tier)
             {
+                
                 tier = bowlable.tier;
             }
         }
 
         //Alternately, we could use trigger "setGrabbable" on all relevant objects.
         //However, this could make for more confusing code to maintain, albeit with better performance.
+        Debug.Log("currentTier" + tier + " " + objs.Length);
         currentTier = tier;
     }
 
@@ -68,11 +70,62 @@ public class GameController : MonoBehaviour
 
     void resetPins()
     {
-        var newPins= Instantiate(pinPrefab,  pinRespawnPosition.position, Quaternion.identity);
-        pinPrefab = newPins;
+        foreach (var t in pins)
+        {
+            Destroy(t);
+        }
+
+        pins.Clear();        
+
+        var childPositions = pinPosition.GetComponentsInChildren<Transform>();
+        print("RESETTING PINS" + childPositions.Length);
+        foreach (var t in childPositions)
+        {
+            pins.Add(Instantiate(pinPrefab, t));
+        }
+        
         
     }
 
+    bool isStandingUp(GameObject p){
+        
+        if (p.transform.rotation.x > -0.1 
+            && p.transform.rotation.x < 0.1 
+            && p.transform.rotation.z < 0.1
+            && p.transform.rotation.z > -0.1)
+        {
+            return true;
+        }
+        
+        return false;
+    }
+
+    
+
+    public int numPinsFallen()
+    {
+
+        return pins.Count(t => !isStandingUp(t));
+    }
+    
+    void removeDownPins()
+    {
+        for (int i = pins.Count - 1; i >= 0; i--)
+        {
+            if (!isStandingUp(pins[i]))
+            {
+                print("DESTROYING PIN" + i);
+                Destroy(pins[i]);
+                pins.RemoveAt(i);
+                //i--;
+            }
+        }
+    }
+    
+    void destroyThrown(GameObject ball)
+    {
+        Destroy(ball);
+    }
     void updateScore()
     {
         if (shots <= 0)
@@ -85,35 +138,23 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void removeDownPins()
+
+   
+
+    public int getSingleGameScore()
     {
-        Destroy(pinPrefab);
+        return numPinsFallen();
     }
 
-    void destroyThrown(GameObject ball)
+    public int getTotalScore()
     {
-        Destroy(ball);
+        return totalScore + getSingleGameScore();
     }
-
     public void WaitForThrow(GameObject ball)
     {
         --shots;
         StartCoroutine(TidyUpGame(ball));
     }
-
-    public int numPinsRemaining()
-    {
-        
-
-        return 0;
-    }
-
-    public int getScore()
-    {
-        //TODO: Remove double counting
-        return totalScore + 10 - numPinsRemaining();
-    }
-
     public IEnumerator TidyUpGame(GameObject ball)
     {
         yield return new WaitForSeconds(timeout);
@@ -121,18 +162,25 @@ public class GameController : MonoBehaviour
         //first destroy ball
         destroyThrown(ball);
         //get current score
-        totalScore = getScore();
+        getSingleGameScore();
+        
+        //get current totalScore
+        totalScore = getTotalScore();
+       
         //update scoreboard
         updateScore();
+        
+        print("#pins" + pins.Count);
         //conditionally reset pins (or destroy old ones)
-        if (shots == 0 || numPinsRemaining() == 0)
+        /*if (shots == 0 || 10 - numPinsFallen() == 0)
         {
             resetPins();
         }
         else
         {
             removeDownPins();
-        }
+        }*/
+        removeDownPins();
 
         //Update current tier
         updateTier();
@@ -140,6 +188,10 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        pins = new List<GameObject>();
+        resetPins();
+        updateTier();
+
         _textMeshPro.text = "Welcome" + " shots left: " + shots;
     }
 
