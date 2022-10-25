@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class BowlingBall : MonoBehaviour
 {
+    AudioSource audioData;
+
     //public Rigidbody rb;
     private bool hasReleased = false;
     //public bool collided = false;
@@ -12,6 +14,8 @@ public class BowlingBall : MonoBehaviour
 
     void Start()
     {
+        audioData = GetComponent<AudioSource>();
+
         s = GameObject.FindObjectOfType(typeof(GameController)) as GameController;
         //testing to make sure it rolls
         //rb = GetComponent<Rigidbody>();
@@ -20,6 +24,16 @@ public class BowlingBall : MonoBehaviour
 
     // Update is called once per frame
     
+
+    private void OnCollisionEnter(Collision  other)
+    {
+        if (other.gameObject.CompareTag("alley"))
+        {
+            print("audioData.Play(0)");
+            audioData.Play(0);
+        }
+        
+    }
   
 
      private void OnTriggerEnter(Collider other)
