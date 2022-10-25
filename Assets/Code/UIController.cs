@@ -16,6 +16,7 @@ public class UIController : MonoBehaviour
     {
         if(showButton.action.WasPressedThisFrame())
         {
+            print("SHOWING MENU");
             menu.SetActive(!menu.activeSelf);
         }
         menu.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
