@@ -26,6 +26,7 @@ public class GameController : MonoBehaviour
     public int shots = 2;
 
     public int currentTier { get; private set; }
+    GlobalAudioController globalAudioController;
 
     //Methods
     private void Awake()
@@ -59,7 +60,7 @@ public class GameController : MonoBehaviour
 
         //Alternately, we could use trigger "setGrabbable" on all relevant objects.
         //However, this could make for more confusing code to maintain, albeit with better performance.
-        Debug.Log("currentTier" + tier + " " + objs.Length);
+       // Debug.Log("currentTier" + tier + " " + objs.Length);
         currentTier = tier;
     }
 
@@ -175,6 +176,9 @@ public class GameController : MonoBehaviour
         //update scoreboard
         updateScore();
         
+        //play cheer audio
+        globalAudioController.playCheerAudio();
+        
         print("#pins" + pins.Count);
         //conditionally reset pins (or destroy old ones)
         if (shots == 0 || pins.Count == numPinsFallen())
@@ -194,9 +198,11 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        globalAudioController = FindObjectOfType(typeof(GlobalAudioController)) as GlobalAudioController;
         pins = new List<GameObject>();
         resetPins();
         updateTier();
+        globalAudioController.playCheerAudio();
 
         _textMeshPro.text = "Welcome" + " shots left: " + shots;
     }
