@@ -445,6 +445,36 @@ PrefabInstance:
       propertyPath: m_RaycastTriggerInteraction
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5049738603961900481, guid: 2303ab09cc8fd63458138880da3493d9,
+        type: 3}
+      propertyPath: m_ValidColorGradient.key0.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049738603961900481, guid: 2303ab09cc8fd63458138880da3493d9,
+        type: 3}
+      propertyPath: m_ValidColorGradient.key0.g
+      value: 0.13366318
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049738603961900481, guid: 2303ab09cc8fd63458138880da3493d9,
+        type: 3}
+      propertyPath: m_ValidColorGradient.key0.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420709515345805641, guid: 2303ab09cc8fd63458138880da3493d9,
+        type: 3}
+      propertyPath: m_ValidColorGradient.key0.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420709515345805641, guid: 2303ab09cc8fd63458138880da3493d9,
+        type: 3}
+      propertyPath: m_ValidColorGradient.key0.g
+      value: 0.13366318
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420709515345805641, guid: 2303ab09cc8fd63458138880da3493d9,
+        type: 3}
+      propertyPath: m_ValidColorGradient.key0.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6501533634141770079, guid: 2303ab09cc8fd63458138880da3493d9,
         type: 3}
       propertyPath: m_Name
