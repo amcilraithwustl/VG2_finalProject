@@ -7,33 +7,68 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using GizmoUtility = UnityEditor.Rendering.GizmoUtility;
 
-public class Bowlable : MonoBehaviour
-{
+public class Bowlable : MonoBehaviour {
+    //Outlets
     private XRGrabInteractable grabScript;
+    private Rigidbody rb;
+    private Transform trans;
 
+    //Config
     public bool isGrabbable = true;
     public bool hasTier = true;
-
+    public bool startStatic = true;
     public int tier = 0;
+    public float shrink = 1;
+    public float shrinkSpeedFactor = 5;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    //State
+    public bool hasBeenGrabbed = false;
+
+    //Methods
+    void Start() {
         grabScript = GetComponent<XRGrabInteractable>();
+        grabScript.selectEntered.AddListener(HandleSelected);
+
+        rb = GetComponent<Rigidbody>();
+        trans = GetComponent<Transform>();
+    }
+
+    void HandleSelected(SelectEnterEventArgs args) {
+        print("Has Been Grabbed");
+        hasBeenGrabbed = true;
+    }
+
+    float calcScaleDelta(float start, float target) {
+        var percentError = (start - target) / target;
+        return -1 * shrinkSpeedFactor * Time.deltaTime * percentError;
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
+        //If it has start static and it hasn't been grabbed, physics won't start
+        rb.isKinematic = startStatic && !hasBeenGrabbed;
+
+        //If it has been grabbed before, the size will scale to fit the bowling alley
+        if (hasBeenGrabbed) {
+            //Scale each dimension separately for smooth locomotion
+            var scale = trans.localScale;
+            scale += new Vector3(
+                calcScaleDelta(scale.x, shrink),
+                calcScaleDelta(scale.y, shrink),
+                calcScaleDelta(scale.z, shrink)
+            );
+            trans.localScale = scale;
+            print(scale.x);
+        }
+
+
         //Check if the tier is enabled (if relevant)
         var unlocked = !hasTier || tier <= GameController.Instance.currentTier;
         grabScript.enabled = isGrabbable && unlocked;
     }
 
-    private void OnDrawGizmos()
-    {
-        if (isGrabbable)
-        {
+    private void OnDrawGizmos() {
+        if (isGrabbable) {
             // Gizmos.color = Color.blue;
             // Gizmos.DrawWireSphere(gameObject.transform.position, 1);
             var style = GUIStyle.none;
@@ -45,8 +80,7 @@ public class Bowlable : MonoBehaviour
         }
     }
 
-    public void setGrabbable(bool state)
-    {
+    public void setGrabbable(bool state) {
         isGrabbable = state;
     }
 }
