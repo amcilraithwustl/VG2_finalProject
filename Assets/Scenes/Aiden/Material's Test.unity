@@ -4706,11 +4706,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 525217622187206548, guid: 7cb6e0302cffc044183d5f2ae40a611d,
-        type: 3}
-      propertyPath: isGrabbable
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 525217622187206551, guid: 7cb6e0302cffc044183d5f2ae40a611d,
         type: 3}
       propertyPath: m_RootOrder
@@ -4784,7 +4779,7 @@ PrefabInstance:
     - target: {fileID: 7565500314796791513, guid: 7cb6e0302cffc044183d5f2ae40a611d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1702
+      value: 1699
       objectReference: {fileID: 0}
     - target: {fileID: 7565500314796791514, guid: 7cb6e0302cffc044183d5f2ae40a611d,
         type: 3}
@@ -4851,41 +4846,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1210714632}
-    - target: {fileID: 7565500314996260646, guid: 7cb6e0302cffc044183d5f2ae40a611d,
-        type: 3}
-      propertyPath: m_text
-      value: Welcome
-      objectReference: {fileID: 0}
-    - target: {fileID: 7565500314996260646, guid: 7cb6e0302cffc044183d5f2ae40a611d,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7565500314996260646, guid: 7cb6e0302cffc044183d5f2ae40a611d,
-        type: 3}
-      propertyPath: m_fontSizeMax
-      value: 0.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 7565500314996260646, guid: 7cb6e0302cffc044183d5f2ae40a611d,
-        type: 3}
-      propertyPath: m_fontSizeMin
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7565500314996260646, guid: 7cb6e0302cffc044183d5f2ae40a611d,
-        type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7565500314996260646, guid: 7cb6e0302cffc044183d5f2ae40a611d,
-        type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 7565500314996260646, guid: 7cb6e0302cffc044183d5f2ae40a611d,
-        type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cb6e0302cffc044183d5f2ae40a611d, type: 3}

@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour
     private List<GameObject> pins = new();
     private int totalScore = 0;
     [FormerlySerializedAs("shots")] public int totalShots = 2;
-    private int currentShot;
+    private int shotsLeft;
 
     //Recording the scores
     public List<List<int>> record;
@@ -47,6 +47,20 @@ public class GameController : MonoBehaviour
         {
             Instance = this;
         }
+    }
+    
+    private void Start()
+    {
+        shotsLeft = totalShots;
+        currentRound = new List<int>();
+        record = new List<List<int>>();
+        globalAudioController = FindObjectOfType(typeof(GlobalAudioController)) as GlobalAudioController;
+        pins = new List<GameObject>();
+        resetPins();
+        updateTier();
+        // globalAudioController.playCheerAudio();
+
+        //_textMeshPro.text = "Welcome" + " shots left: " + shots;
     }
 
     private void updateTier()
@@ -110,6 +124,7 @@ public class GameController : MonoBehaviour
 
     public int numPinsFallen()
     {
+        print(pins.Count(t => !isStandingUp(t)));
         return pins.Count(t => !isStandingUp(t));
     }
     
@@ -140,7 +155,7 @@ public class GameController : MonoBehaviour
 
     public void recordScore()
     {
-        if (currentShot > 0) {
+        if (shotsLeft > 0) {
             currentRound.Add(numPinsFallen());
         }
         else {
@@ -151,43 +166,60 @@ public class GameController : MonoBehaviour
         
     }
 
-    private void recalculateRecord() {
+    private  List<List<int>> recalculateRecord() {
         List<List<int>> newRecord = new List<List<int>>();
         for (int i = 0; i < record.Count; i++) {
-            if (record[i][0] == 10) {
+            newRecord.Add(new List<int>(record[i]));
+            List<int> shot = new List<int>(record[i]);
+            if (shot.Count == 1)
+            {
+                shot.Add(-1);
+            }
+            //Strike
+            if (shot[0] == 10) {
                 int temp = 10;
 
-                if (record[i + 1][0] == 10 && i + 2 < record.Count) {
+                //If the next one is strike a strike, and the one after has been taken
+                if (i + 2 < record.Count && record[i + 1][0] == 10) {
                     temp += record[i + 1][0] + record[i + 2][0];
                 }
-                else if (record[i + 1][0] == 10 && i + 1 < record.Count) {
+                
+                //If the next one is a strike, but there is no one after that
+                else if (i + 1 < record.Count && record[i + 1][0] == 10) {
                     temp += 10;
                 }
+                
+                //if this is a strike nad the next one isn't (and it exists)
                 else if (i + 1 < record.Count) {
                     temp += record[i + 1][0] + record[i + 1][1];
                 }
-                newRecord[i][0] = temp;
-                newRecord[i][1] = 0;
+                int[] t = {temp, 0};
+                newRecord[i] = new List<int>(t);
 
-            } else if (record[i][0] + record[i][0] == 10) {
-                newRecord[i][0] = record[i][0];
-                int temp = record[i][1];
+            } 
+            //Spare
+            else if (shot[0] + shot[1] == 10) {
+                newRecord[i][0] = shot[0];
+                int temp = shot[1];
                 if (i + 1 < record.Count) {
                     temp += record[i + 1][0];
                 }
                 newRecord[i][1] = temp;
             }
             else {
-                newRecord[i][0] = record[i][0];
-                newRecord[i][1] = record[i][1];
+                newRecord[i][0] = shot[0];
+                
+                if(shot[1]!= -1)
+                    newRecord[i][1] = shot[1];
             }
+            
         }
-        record = newRecord;
+        return newRecord;
     }
     
     public void WaitForThrow(GameObject ball)
     {
-        --currentShot;
+        --shotsLeft;
         StartCoroutine(TidyUpGame(ball));
     }
     public IEnumerator TidyUpGame(GameObject ball)
@@ -199,59 +231,52 @@ public class GameController : MonoBehaviour
        
 
         //update tv
-        updateDisplay("SingleGameScore: " + numPinsFallen());
         print("SingleGameScore: " + numPinsFallen());
 
         
         //play cheer audio
         globalAudioController.playCheerAudio();
         
-        // Strike
+        // Strike, so no shots left this round
         if (numPinsFallen() == 10) {
-            currentShot = 0;
-            resetPins();
-            
-        } 
-        // Spare
-        else if (pins.Count == numPinsFallen())
+            shotsLeft = 0;
+        }
+
+        //record
+        recordScore();
+        print("Record");
+        foreach (var v in record)
         {
+            print(v.ToSeparatedString(", "));
+        }
+        Debug.Log(record.ToSeparatedString(", "));
+        var newRecord = recalculateRecord();
+        print("Record2");
+        string str = "";
+        foreach (var v in newRecord)
+        {
+            str += v.ToSeparatedString(", ");
+            str += " | ";
+            print(v.ToSeparatedString(", "));
+        }
+        updateDisplay("ShotScore: \n" + numPinsFallen() + "Record: \n" + str);
+
+        
+        // One Round end
+        if (shotsLeft == 0)
+        {
+            shotsLeft = totalShots;
             resetPins();
-            //totalScore += numPinsFallen();
-            //totalScore *= 2;
-        } 
+        }
         else
         {
             removeDownPins();
-            //totalScore += numPinsFallen();
         }
-        
-        //record
-        recordScore();
-        recalculateRecord();
-        print(record);
-        
-        // One Round end
-        if (currentShot == 0)
-        {
-            currentShot = totalShots;
-        }
-
         
 
     }
 
-    private void Start()
-    {
-        currentShot = totalShots;
-        currentRound = new List<int>();
-        globalAudioController = FindObjectOfType(typeof(GlobalAudioController)) as GlobalAudioController;
-        pins = new List<GameObject>();
-        resetPins();
-        updateTier();
-        globalAudioController.playCheerAudio();
-
-        //_textMeshPro.text = "Welcome" + " shots left: " + shots;
-    }
+    
 
     void Update()
     {

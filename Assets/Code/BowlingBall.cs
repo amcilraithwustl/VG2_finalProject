@@ -7,6 +7,7 @@ public class BowlingBall : MonoBehaviour
 {
     AudioSource audioData;
 
+    private Bowlable b;
     //public Rigidbody rb;
     private bool hasReleased = false;
     //public bool collided = false;
@@ -14,6 +15,7 @@ public class BowlingBall : MonoBehaviour
 
     void Start()
     {
+        b = GetComponent<Bowlable>();
         audioData = GetComponent<AudioSource>();
         s = GameObject.FindObjectOfType(typeof(GameController)) as GameController;
         //testing to make sure it rolls
@@ -36,7 +38,7 @@ public class BowlingBall : MonoBehaviour
      private void OnTriggerEnter(Collider other)
      {
         // print("TIRGGER");
-         if (!hasReleased && other.gameObject.CompareTag("scorezone")) {
+         if (!hasReleased && b.hasBeenGrabbed && other.gameObject.CompareTag("scorezone")) {
              print("object entered the score zone, calling WaitForThrow");
              s.WaitForThrow(this.gameObject);
              hasReleased = true;
