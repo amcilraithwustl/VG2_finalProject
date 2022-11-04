@@ -9,6 +9,7 @@ using Unity.VisualScripting;
 using Unity.XR.CoreUtils;
 using UnityEngine.ProBuilder;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
 public class GameController : MonoBehaviour
@@ -23,12 +24,14 @@ public class GameController : MonoBehaviour
     //TODO: outdated. Do during update?
     private List<GameObject> pins = new();
     private int totalScore = 0;
-    public int shots = 2;
+    [FormerlySerializedAs("shots")] public int totalShots = 2;
     private int currentShot;
 
     //Recording the scores
     public List<List<int>> record;
-    public int currentRound = 0;
+    private List<int> currentRound;
+    public int totalRound = 10;
+    
     public int currentTier { get; private set; }
     GlobalAudioController globalAudioController;
 
@@ -129,22 +132,57 @@ public class GameController : MonoBehaviour
         print("destroyThrown: Destroy the ball");
         Destroy(ball);
     }
-    void updateScore()
+    void updateDisplay(String s)
     {
-        if (shots <= 0)
-        {
-            _textMeshPro.text = "score: " + totalScore;
-        }
-        else
-        {
-            _textMeshPro.text = "SingleGameScore"   + " shots left: " + shots;
-        }
+        _textMeshPro.text = s;
+       
     }
 
     public void recordScore()
     {
+        if (currentShot > 0) {
+            currentRound.Add(numPinsFallen());
+        }
+        else {
+            currentRound.Add(numPinsFallen());
+            record.Add(currentRound);
+            currentRound = new List<int>();
+        }
         
-        
+    }
+
+    private void recalculateRecord() {
+        List<List<int>> newRecord = new List<List<int>>();
+        for (int i = 0; i < record.Count; i++) {
+            if (record[i][0] == 10) {
+                int temp = 10;
+
+                if (record[i + 1][0] == 10 && i + 2 < record.Count) {
+                    temp += record[i + 1][0] + record[i + 2][0];
+                }
+                else if (record[i + 1][0] == 10 && i + 1 < record.Count) {
+                    temp += 10;
+                }
+                else if (i + 1 < record.Count) {
+                    temp += record[i + 1][0] + record[i + 1][1];
+                }
+                newRecord[i][0] = temp;
+                newRecord[i][1] = 0;
+
+            } else if (record[i][0] + record[i][0] == 10) {
+                newRecord[i][0] = record[i][0];
+                int temp = record[i][1];
+                if (i + 1 < record.Count) {
+                    temp += record[i + 1][0];
+                }
+                newRecord[i][1] = temp;
+            }
+            else {
+                newRecord[i][0] = record[i][0];
+                newRecord[i][1] = record[i][1];
+            }
+        }
+        record = newRecord;
     }
     
     public void WaitForThrow(GameObject ball)
@@ -160,47 +198,52 @@ public class GameController : MonoBehaviour
         destroyThrown(ball);
        
 
-        //update scoreboard
-        updateScore();
+        //update tv
+        updateDisplay("SingleGameScore: " + numPinsFallen());
+        print("SingleGameScore: " + numPinsFallen());
+
         
         //play cheer audio
         globalAudioController.playCheerAudio();
         
-        print("SingleGameScore: " + numPinsFallen());
         // Strike
-        if (numPinsFallen() == 10)
-        {
+        if (numPinsFallen() == 10) {
+            currentShot = 0;
             resetPins();
-            currentShot++;
-            //totalScore *= 10;
+            
         } 
         // Spare
         else if (pins.Count == numPinsFallen())
         {
             resetPins();
-            totalScore += numPinsFallen();
+            //totalScore += numPinsFallen();
             //totalScore *= 2;
         } 
         else
         {
             removeDownPins();
-            totalScore += numPinsFallen();
+            //totalScore += numPinsFallen();
         }
+        
+        //record
+        recordScore();
+        recalculateRecord();
+        print(record);
         
         // One Round end
         if (currentShot == 0)
         {
-            currentShot = shots;
-            resetPins();
+            currentShot = totalShots;
         }
 
-        recordScore();
+        
 
     }
 
     private void Start()
     {
-        currentShot = shots;
+        currentShot = totalShots;
+        currentRound = new List<int>();
         globalAudioController = FindObjectOfType(typeof(GlobalAudioController)) as GlobalAudioController;
         pins = new List<GameObject>();
         resetPins();
