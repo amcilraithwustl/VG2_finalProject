@@ -231,7 +231,6 @@ public class GameController : MonoBehaviour
        
 
         //update tv
-        updateDisplay("SingleGameScore: " + numPinsFallen());
         print("SingleGameScore: " + numPinsFallen());
 
         
@@ -253,10 +252,15 @@ public class GameController : MonoBehaviour
         Debug.Log(record.ToSeparatedString(", "));
         var newRecord = recalculateRecord();
         print("Record2");
+        string str = "";
         foreach (var v in newRecord)
         {
+            str += v.ToSeparatedString(", ");
+            str += " | ";
             print(v.ToSeparatedString(", "));
         }
+        updateDisplay("ShotScore: \n" + numPinsFallen() + "Record: \n" + str);
+
         
         // One Round end
         if (shotsLeft == 0)
