@@ -58,7 +58,6 @@ public class Bowlable : MonoBehaviour {
                 calcScaleDelta(scale.z, shrink)
             );
             trans.localScale = scale;
-            print(scale.x);
         }
 
 

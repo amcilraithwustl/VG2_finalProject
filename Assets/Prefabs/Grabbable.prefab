@@ -216,7 +216,7 @@ MonoBehaviour:
   startStatic: 1
   tier: 1
   shrink: 1
-  shrinkSpeedFactor: 5
+  shrinkSpeedFactor: 3
   hasBeenGrabbed: 0
 --- !u!114 &1289045146
 MonoBehaviour:
