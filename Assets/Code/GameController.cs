@@ -24,7 +24,11 @@ public class GameController : MonoBehaviour
     private List<GameObject> pins = new();
     private int totalScore = 0;
     public int shots = 2;
+    private int currentShot;
 
+    //Recording the scores
+    public List<List<int>> record;
+    public int currentRound = 0;
     public int currentTier { get; private set; }
     GlobalAudioController globalAudioController;
 
@@ -32,7 +36,6 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
-
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -64,11 +67,6 @@ public class GameController : MonoBehaviour
         currentTier = tier;
     }
 
-    public int getShots()
-    {
-        return shots;
-    }
-
     void resetPins()
     {
         foreach (var t in pins)
@@ -77,7 +75,6 @@ public class GameController : MonoBehaviour
         }
 
         pins.Clear();
-
 
         List<Transform> childPositions = new();
         for (int i = 0; i < pinPosition.transform.childCount; i++)
@@ -110,7 +107,6 @@ public class GameController : MonoBehaviour
 
     public int numPinsFallen()
     {
-
         return pins.Count(t => !isStandingUp(t));
     }
     
@@ -130,6 +126,7 @@ public class GameController : MonoBehaviour
     
     void destroyThrown(GameObject ball)
     {
+        print("destroyThrown: Destroy the ball");
         Destroy(ball);
     }
     void updateScore()
@@ -140,25 +137,19 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            _textMeshPro.text = "SingleGameScore" + getSingleGameScore()  + " shots left: " + shots;
+            _textMeshPro.text = "SingleGameScore"   + " shots left: " + shots;
         }
     }
 
-
-   
-
-    public int getSingleGameScore()
+    public void recordScore()
     {
-        return numPinsFallen();
+        
+        
     }
-
-    public int getTotalScore()
-    {
-        return totalScore + getSingleGameScore();
-    }
+    
     public void WaitForThrow(GameObject ball)
     {
-        --shots;
+        --currentShot;
         StartCoroutine(TidyUpGame(ball));
     }
     public IEnumerator TidyUpGame(GameObject ball)
@@ -167,44 +158,56 @@ public class GameController : MonoBehaviour
 
         //first destroy ball
         destroyThrown(ball);
-        //get current score
-        getSingleGameScore();
-        
-        //get current totalScore
-        totalScore = getTotalScore();
        
+
         //update scoreboard
         updateScore();
         
         //play cheer audio
         globalAudioController.playCheerAudio();
         
-        print("#pins" + pins.Count);
-        //conditionally reset pins (or destroy old ones)
-        if (shots == 0 || pins.Count == numPinsFallen())
+        print("SingleGameScore: " + numPinsFallen());
+        // Strike
+        if (numPinsFallen() == 10)
         {
             resetPins();
-            shots = 2;//TODO: Remove magic number
-        }
+            currentShot++;
+            //totalScore *= 10;
+        } 
+        // Spare
+        else if (pins.Count == numPinsFallen())
+        {
+            resetPins();
+            totalScore += numPinsFallen();
+            //totalScore *= 2;
+        } 
         else
         {
             removeDownPins();
+            totalScore += numPinsFallen();
         }
-       // removeDownPins();
-       // resetPins();
+        
+        // One Round end
+        if (currentShot == 0)
+        {
+            currentShot = shots;
+            resetPins();
+        }
 
-        //Update current tier
+        recordScore();
+
     }
 
     private void Start()
     {
+        currentShot = shots;
         globalAudioController = FindObjectOfType(typeof(GlobalAudioController)) as GlobalAudioController;
         pins = new List<GameObject>();
         resetPins();
         updateTier();
         globalAudioController.playCheerAudio();
 
-        _textMeshPro.text = "Welcome" + " shots left: " + shots;
+        //_textMeshPro.text = "Welcome" + " shots left: " + shots;
     }
 
     void Update()

@@ -15,7 +15,6 @@ public class BowlingBall : MonoBehaviour
     void Start()
     {
         audioData = GetComponent<AudioSource>();
-
         s = GameObject.FindObjectOfType(typeof(GameController)) as GameController;
         //testing to make sure it rolls
         //rb = GetComponent<Rigidbody>();
@@ -23,13 +22,11 @@ public class BowlingBall : MonoBehaviour
     }
 
     // Update is called once per frame
-    
-
     private void OnCollisionEnter(Collision  other)
     {
         if (other.gameObject.CompareTag("alley"))
         {
-            print("audioData.Play(0)");
+            //print("audioData.Play(0)");
             audioData.Play(0);
         }
         
@@ -40,7 +37,7 @@ public class BowlingBall : MonoBehaviour
      {
         // print("TIRGGER");
          if (!hasReleased && other.gameObject.CompareTag("scorezone")) {
-             print("TAKING THE SHOT");
+             print("object entered the score zone, calling WaitForThrow");
              s.WaitForThrow(this.gameObject);
              hasReleased = true;
          }
