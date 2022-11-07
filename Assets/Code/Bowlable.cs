@@ -42,7 +42,7 @@ public class Bowlable : MonoBehaviour {
         isGrabbed = true;
     }
 
-    void HandleDropped(SelectExitEvent args) {
+    void HandleDropped(SelectExitEventArgs args) {
         print("Has Been Dropped");
         GameController.Instance.currentlyGrabbed--;
         isGrabbed = false;
