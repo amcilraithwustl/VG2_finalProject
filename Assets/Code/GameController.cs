@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour
     //Recording the scores
     public List<List<int>> record;
     private List<int> currentRound;
+    public int currentlyGrabbed = 0;
     public int totalRound = 10;
     
     public int currentTier { get; private set; }

@@ -15,6 +15,7 @@ public class Bowlable : MonoBehaviour {
 
     //Config
     public bool isGrabbable = true;
+    public bool isGrabbed = false;
     public bool hasTier = true;
     public bool startStatic = true;
     public int tier = 0;
@@ -28,6 +29,7 @@ public class Bowlable : MonoBehaviour {
     void Start() {
         grabScript = GetComponent<XRGrabInteractable>();
         grabScript.selectEntered.AddListener(HandleSelected);
+        grabScript.selectExited.AddListener(HandleDropped);
 
         rb = GetComponent<Rigidbody>();
         trans = GetComponent<Transform>();
@@ -36,6 +38,14 @@ public class Bowlable : MonoBehaviour {
     void HandleSelected(SelectEnterEventArgs args) {
         print("Has Been Grabbed");
         hasBeenGrabbed = true;
+        GameController.Instance.currentlyGrabbed++;
+        isGrabbed = true;
+    }
+
+    void HandleDropped(SelectExitEvent args) {
+        print("Has Been Dropped");
+        GameController.Instance.currentlyGrabbed--;
+        isGrabbed = false;
     }
 
     float calcScaleDelta(float start, float target) {
@@ -63,7 +73,14 @@ public class Bowlable : MonoBehaviour {
 
         //Check if the tier is enabled (if relevant)
         var unlocked = !hasTier || tier <= GameController.Instance.currentTier;
-        grabScript.enabled = isGrabbable && unlocked;
+
+
+        if (isGrabbed) {
+            grabScript.enabled = true;
+        }
+        else {
+            grabScript.enabled = isGrabbable && unlocked && GameController.Instance.currentlyGrabbed == 0;
+        }
     }
 
     private void OnDrawGizmos() {
