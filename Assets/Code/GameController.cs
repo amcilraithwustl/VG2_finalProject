@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
     [NotNull] public GameObject pinPosition;
     
     public TMP_Text _textMeshPro;
+    public TMP_Text mainMenuText;
     public float timeout = 3.0f;
 
     //TODO: outdated. Do during update?
@@ -162,6 +163,8 @@ public class GameController : MonoBehaviour
             currentRound.Add(numPinsFallen());
             record.Add(currentRound);
             currentRound = new List<int>();
+            
+
         }
         
     }
@@ -276,7 +279,19 @@ public class GameController : MonoBehaviour
 
     }
 
-    
+    public void UpdateUIScore()
+    {
+        int totalScore = 0;
+        var calc = recalculateRecord();
+        foreach(var rec in calc)
+        {
+            foreach(var score in rec)
+            {
+                totalScore += score;
+            }
+        }
+        mainMenuText.text = "Total Score: " + totalScore;
+     }
 
     void Update()
     {
