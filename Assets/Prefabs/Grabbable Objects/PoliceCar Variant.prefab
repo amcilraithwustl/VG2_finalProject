@@ -31,17 +31,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: cf3e980b030d6fb4e947298d26aa8e74,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf3e980b030d6fb4e947298d26aa8e74,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.57389987
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf3e980b030d6fb4e947298d26aa8e74,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.85
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf3e980b030d6fb4e947298d26aa8e74,
         type: 3}
@@ -122,27 +122,32 @@ PrefabInstance:
     - target: {fileID: 4685438089444560773, guid: ac1083e94bbccfc44a0654474501730d,
         type: 3}
       propertyPath: m_Name
-      value: PoliceCar
+      value: PoliceCar Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685438089444560780, guid: ac1083e94bbccfc44a0654474501730d,
+        type: 3}
+      propertyPath: shrink
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4685438089444560783, guid: ac1083e94bbccfc44a0654474501730d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4685438089444560783, guid: ac1083e94bbccfc44a0654474501730d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.71
+      value: -17.244051
       objectReference: {fileID: 0}
     - target: {fileID: 4685438089444560783, guid: ac1083e94bbccfc44a0654474501730d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.574
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4685438089444560783, guid: ac1083e94bbccfc44a0654474501730d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.06
+      value: 7.577408
       objectReference: {fileID: 0}
     - target: {fileID: 4685438089444560783, guid: ac1083e94bbccfc44a0654474501730d,
         type: 3}
@@ -182,12 +187,47 @@ PrefabInstance:
     - target: {fileID: 6714686248245495576, guid: ac1083e94bbccfc44a0654474501730d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.02
+      value: -1.276
+      objectReference: {fileID: 0}
+    - target: {fileID: 6714686248245495576, guid: ac1083e94bbccfc44a0654474501730d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.256
       objectReference: {fileID: 0}
     - target: {fileID: 6714686248245495576, guid: ac1083e94bbccfc44a0654474501730d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.98
+      value: 0.134
+      objectReference: {fileID: 0}
+    - target: {fileID: 6714686248245495576, guid: ac1083e94bbccfc44a0654474501730d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6714686248245495576, guid: ac1083e94bbccfc44a0654474501730d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6714686248245495576, guid: ac1083e94bbccfc44a0654474501730d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6714686248245495576, guid: ac1083e94bbccfc44a0654474501730d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6714686248245495576, guid: ac1083e94bbccfc44a0654474501730d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6714686248245495576, guid: ac1083e94bbccfc44a0654474501730d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects:
