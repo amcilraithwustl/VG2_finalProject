@@ -36,6 +36,8 @@ public class GameController : MonoBehaviour
     public int currentTier { get; private set; }
     GlobalAudioController globalAudioController;
 
+    public Collider barrier = new();
+
     //Methods
     private void Awake()
     {
@@ -154,6 +156,13 @@ public class GameController : MonoBehaviour
        
     }
 
+    public lockBarrier() {
+        barrier.isTrigger = false;
+    }
+
+    public unlockBarrier() {
+        barrier.isTrigger = true;
+    }
     public void recordScore()
     {
         if (shotsLeft > 0) {
