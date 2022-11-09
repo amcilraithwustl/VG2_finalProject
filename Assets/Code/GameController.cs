@@ -156,11 +156,11 @@ public class GameController : MonoBehaviour
        
     }
 
-    public lockBarrier() {
+    public void lockBarrier() {
         barrier.isTrigger = false;
     }
 
-    public unlockBarrier() {
+    public void unlockBarrier() {
         barrier.isTrigger = true;
     }
     public void recordScore()
