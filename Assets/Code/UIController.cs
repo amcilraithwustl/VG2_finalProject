@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
     public GameObject menu;
+    //public GameObject scoreboard;
     public InputActionProperty showButton;
     public Transform head;
     public float spawnDistance = 2;
@@ -19,14 +21,14 @@ public class UIController : MonoBehaviour
             print("SHOWING MENU");
             menu.SetActive(!menu.activeSelf);
         }
-        menu.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
-        menu.transform.LookAt(new Vector3(head.position.x, menu.transform.position.y, head.position.z));
-        menu.transform.forward *= -1;
+        //menu.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
+        //menu.transform.LookAt(new Vector3(head.position.x, menu.transform.position.y, head.position.z));
+        //menu.transform.forward *= -1;
     }
 
-    public void RestartGame()
+    
+    public void StartGame()
     {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        SceneManager.LoadScene("Material's Test");
     }
 }
