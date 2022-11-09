@@ -42,6 +42,7 @@ public class BowlingBall : MonoBehaviour
              print("object entered the score zone, calling WaitForThrow");
              s.WaitForThrow(this.gameObject);
              hasReleased = true;
+             GameController.Instance.lockBarrier();
          }
      }
 }

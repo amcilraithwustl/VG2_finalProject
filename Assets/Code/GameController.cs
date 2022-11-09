@@ -157,11 +157,11 @@ public class GameController : MonoBehaviour
     }
 
     public void lockBarrier() {
-        barrier.isTrigger = false;
+        barrier.enabled = true;
     }
 
     public void unlockBarrier() {
-        barrier.isTrigger = true;
+        barrier.enabled = false;
     }
     public void recordScore()
     {
@@ -282,7 +282,7 @@ public class GameController : MonoBehaviour
         {
             removeDownPins();
         }
-        
+        unlockBarrier();
 
     }
 
