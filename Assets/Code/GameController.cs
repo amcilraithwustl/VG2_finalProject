@@ -300,7 +300,7 @@ public class GameController : MonoBehaviour
                 totalScore += score;
             }
         }
-        mainMenuText.text = "Total Score: " + totalScore;
+        mainMenuText.text = Convert.ToString(totalScore);
      }
 
     void Update()
