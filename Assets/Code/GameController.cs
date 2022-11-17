@@ -8,12 +8,11 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.Serialization;
 
-public class GameController : MonoBehaviour
-{
+public class GameController : MonoBehaviour {
     public static GameController Instance { get; private set; }
     public GameObject pinPrefab;
     [NotNull] public GameObject pinPosition;
-    
+
     public TMP_Text _textMeshPro;
     public TMP_Text mainMenuText;
     public float timeout = 3.0f;
@@ -61,8 +60,7 @@ public class GameController : MonoBehaviour
         //_textMeshPro.text = "Welcome" + " shots left: " + shots;
     }
 
-    private void updateTier()
-    {
+    private void updateTier() {
         //Get all game objects with bowlable
         var objs = FindObjectsOfType<Bowlable>();
         //set tier to lowest current bowlable value
@@ -75,14 +73,12 @@ public class GameController : MonoBehaviour
 
         //Alternately, we could use trigger "setGrabbable" on all relevant objects.
         //However, this could make for more confusing code to maintain, albeit with better performance.
-       // Debug.Log("currentTier" + tier + " " + objs.Length);
+        // Debug.Log("currentTier" + tier + " " + objs.Length);
         currentTier = tier;
     }
 
-    void resetPins()
-    {
-        foreach (var t in pins)
-        {
+    void resetPins() {
+        foreach (var t in pins) {
             Destroy(t);
         }
 
@@ -231,7 +227,6 @@ public class GameController : MonoBehaviour
         //update tv
         print("SingleGameScore: " + numPinsFallen());
         UpdateUIScore();
-        
 
 
         //play cheer audio
@@ -272,33 +267,24 @@ public class GameController : MonoBehaviour
         else {
             removeDownPins();
         }
-        unlockBarrier();
 
+        unlockBarrier();
     }
 
-    public void UpdateUIScore()
-    {
+    public void UpdateUIScore() {
         int totalScore = 0;
         var disp = "";
         var calc = recalculateRecord();
-        foreach(var rec in calc)
-        {
-            foreach(var score in rec)
-            {
-                totalScore += score;
-                disp += Convert.ToString(score) + " ";
-                
-            }
+        foreach (var rec in calc) {
+            disp += rec.ToString();
             disp += " | ";
         }
 
         print(totalScore);
-       updateDisplay(disp + ": " + Convert.ToString(totalScore));
+        updateDisplay(disp + ": " + Convert.ToString(totalScore));
+    }
 
-     }
-
-    void Update()
-    {
+    void Update() {
         updateTier();
 
         //Debug.Log(score);
