@@ -1314,7 +1314,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34100
+  m_Name: pb_Mesh32578
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -1976,7 +1976,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-19208
+  m_Name: pb_Mesh-5546
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -2630,7 +2630,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-19790
+  m_Name: pb_Mesh-6618
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -3292,7 +3292,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-19760
+  m_Name: pb_Mesh-6588
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -4747,7 +4747,7 @@ PrefabInstance:
     - target: {fileID: 7565500314796791513, guid: 7cb6e0302cffc044183d5f2ae40a611d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 2027
+      value: 2033
       objectReference: {fileID: 0}
     - target: {fileID: 7565500314796791513, guid: 7cb6e0302cffc044183d5f2ae40a611d,
         type: 3}
@@ -7300,6 +7300,16 @@ PrefabInstance:
       propertyPath: mainMenuText
       value: 
       objectReference: {fileID: 23131488}
+    - target: {fileID: 8444192635607926120, guid: 670824a1ee4c86649a6274e5301f30d9,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444192635607926123, guid: 670824a1ee4c86649a6274e5301f30d9,
+        type: 3}
+      propertyPath: m_Name
+      value: CheersAudioController
+      objectReference: {fileID: 0}
     - target: {fileID: 8662776334310075959, guid: 670824a1ee4c86649a6274e5301f30d9,
         type: 3}
       propertyPath: m_Mesh
