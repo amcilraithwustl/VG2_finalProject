@@ -29,6 +29,12 @@ public class UIController : MonoBehaviour
     
     public void StartGame()
     {
-        SceneManager.LoadScene("Material's Test");
+        SceneManager.LoadScene("MechanicsFix");
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 }

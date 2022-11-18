@@ -996,7 +996,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1168
+  m_VersionIndex: 1171
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1340,7 +1340,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3527
+  m_VersionIndex: 3530
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1890,7 +1890,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2825
+  m_VersionIndex: 2828
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2034,6 +2034,7 @@ MonoBehaviour:
     type: 3}
   pinPosition: {fileID: 0}
   _textMeshPro: {fileID: 0}
+  mainMenuText: {fileID: 0}
   timeout: 6
   totalShots: 2
   currentlyGrabbed: 0
@@ -2189,6 +2190,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 4451789505908408795}
     m_Modifications:
+    - target: {fileID: 171545985, guid: 2303ab09cc8fd63458138880da3493d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 171564582, guid: 2303ab09cc8fd63458138880da3493d9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1

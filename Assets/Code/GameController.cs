@@ -154,7 +154,7 @@ public class GameController : MonoBehaviour
     void updateDisplay(String s)
     {
         _textMeshPro.text = s;
-       
+        mainMenuText.text = s;
     }
 
     public void lockBarrier() {
@@ -245,7 +245,7 @@ public class GameController : MonoBehaviour
 
         //update tv
         print("SingleGameScore: " + numPinsFallen());
-
+        UpdateUIScore();
         
         //play cheer audio
         globalAudioController.playCheerAudio();
@@ -263,7 +263,7 @@ public class GameController : MonoBehaviour
             print(v.ToSeparatedString(", "));
         }
         Debug.Log(record.ToSeparatedString(", "));
-        var newRecord = recalculateRecord();
+        /*var newRecord = recalculateRecord();
         print("Record2");
         string str = "";
         foreach (var v in newRecord)
@@ -271,8 +271,8 @@ public class GameController : MonoBehaviour
             str += v.ToSeparatedString(", ");
             str += " | ";
             print(v.ToSeparatedString(", "));
-        }
-        updateDisplay("ShotScore: \n" + numPinsFallen() + "Record: \n" + str);
+        }*/
+        // updateDisplay("ShotScore: \n" + numPinsFallen() + "Record: \n" + str);
 
         
         // One Round end
@@ -286,22 +286,31 @@ public class GameController : MonoBehaviour
             removeDownPins();
         }
         unlockBarrier();
+        
+        UpdateUIScore();
 
     }
 
     public void UpdateUIScore()
     {
         int totalScore = 0;
+        var disp = "";
         var calc = recalculateRecord();
         foreach(var rec in calc)
         {
             foreach(var score in rec)
             {
                 totalScore += score;
+                disp += Convert.ToString(score) + " ";
+                
             }
+            disp += " | ";
         }
-        mainMenuText.text = Convert.ToString(totalScore);
-    }
+
+        print(totalScore);
+       updateDisplay(disp + ": " + Convert.ToString(totalScore));
+
+     }
 
     void Update()
     {
