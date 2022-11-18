@@ -301,7 +301,7 @@ public class GameController : MonoBehaviour
             }
         }
         mainMenuText.text = Convert.ToString(totalScore);
-     }
+    }
 
     void Update()
     {
