@@ -35,8 +35,10 @@ public class GameController : MonoBehaviour
     public int totalRound = 10;
     
     public int currentTier { get; private set; }
-    GlobalAudioController globalAudioController;
-
+    
+    //Audio
+    private GlobalAudioController globalAudioController;
+    private BGMAudioController bgmAudioController;
     public Collider barrier = new();
 
     //Methods
@@ -58,10 +60,14 @@ public class GameController : MonoBehaviour
         shotsLeft = totalShots;
         currentRound = new List<int>();
         record = new List<List<int>>();
-        globalAudioController = FindObjectOfType(typeof(GlobalAudioController)) as GlobalAudioController;
         pins = new List<GameObject>();
         resetPins();
         updateTier();
+        
+        //Audio
+        globalAudioController = FindObjectOfType(typeof(GlobalAudioController)) as GlobalAudioController;
+        bgmAudioController = FindObjectOfType(typeof(BGMAudioController)) as BGMAudioController;
+        bgmAudioController.PlayBgmAudio();
         // globalAudioController.playCheerAudio();
 
         //_textMeshPro.text = "Welcome" + " shots left: " + shots;

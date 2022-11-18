@@ -124,18 +124,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &23131488 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8444192635343258254, guid: 670824a1ee4c86649a6274e5301f30d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 8444192634487498438}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &39948296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -426,7 +414,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-19746
+  m_Name: pb_Mesh-6574
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -7165,6 +7153,16 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2340419191084191077, guid: 670824a1ee4c86649a6274e5301f30d9,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2340419191084191077, guid: 670824a1ee4c86649a6274e5301f30d9,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4451789505908408795, guid: 670824a1ee4c86649a6274e5301f30d9,
         type: 3}
       propertyPath: m_RootOrder
@@ -7228,7 +7226,7 @@ PrefabInstance:
     - target: {fileID: 5553752337913100420, guid: 670824a1ee4c86649a6274e5301f30d9,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1174
+      value: 1180
       objectReference: {fileID: 0}
     - target: {fileID: 6732393388112960705, guid: 670824a1ee4c86649a6274e5301f30d9,
         type: 3}
@@ -7248,7 +7246,7 @@ PrefabInstance:
     - target: {fileID: 8444192633875140547, guid: 670824a1ee4c86649a6274e5301f30d9,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 3533
+      value: 3539
       objectReference: {fileID: 0}
     - target: {fileID: 8444192633875140548, guid: 670824a1ee4c86649a6274e5301f30d9,
         type: 3}
@@ -7260,11 +7258,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1827697158}
-    - target: {fileID: 8444192634153332259, guid: 670824a1ee4c86649a6274e5301f30d9,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RestartGame
-      objectReference: {fileID: 0}
     - target: {fileID: 8444192635246010043, guid: 670824a1ee4c86649a6274e5301f30d9,
         type: 3}
       propertyPath: m_Mesh
@@ -7273,7 +7266,7 @@ PrefabInstance:
     - target: {fileID: 8444192635246010043, guid: 670824a1ee4c86649a6274e5301f30d9,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 2831
+      value: 2837
       objectReference: {fileID: 0}
     - target: {fileID: 8444192635246010044, guid: 670824a1ee4c86649a6274e5301f30d9,
         type: 3}
@@ -7295,21 +7288,6 @@ PrefabInstance:
       propertyPath: _textMeshPro
       value: 
       objectReference: {fileID: 2013118234}
-    - target: {fileID: 8444192635496759994, guid: 670824a1ee4c86649a6274e5301f30d9,
-        type: 3}
-      propertyPath: mainMenuText
-      value: 
-      objectReference: {fileID: 23131488}
-    - target: {fileID: 8444192635607926120, guid: 670824a1ee4c86649a6274e5301f30d9,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8444192635607926123, guid: 670824a1ee4c86649a6274e5301f30d9,
-        type: 3}
-      propertyPath: m_Name
-      value: CheersAudioController
-      objectReference: {fileID: 0}
     - target: {fileID: 8662776334310075959, guid: 670824a1ee4c86649a6274e5301f30d9,
         type: 3}
       propertyPath: m_Mesh
