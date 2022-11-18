@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour {
         //Audio
         globalAudioController = FindObjectOfType(typeof(GlobalAudioController)) as GlobalAudioController;
         bgmAudioController = FindObjectOfType(typeof(BGMAudioController)) as BGMAudioController;
-        bgmAudioController.PlayBgmAudio();
+        if (bgmAudioController != null) bgmAudioController.PlayBgmAudio();
         // globalAudioController.playCheerAudio();
 
         //_textMeshPro.text = "Welcome" + " shots left: " + shots;
@@ -209,7 +209,7 @@ public class GameController : MonoBehaviour {
 
         List<int> final = new();
         foreach (var r in newRecord) {
-            final.Add(r[0]);
+            final.Add(r[0] + (final.Count > 0 ? final[^1] : 0));
             if (r.Count > 1) {
                 final[^1] += r[1];
             }

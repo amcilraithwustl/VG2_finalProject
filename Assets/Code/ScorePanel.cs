@@ -15,14 +15,14 @@ public class ScorePanel : MonoBehaviour {
     }
 
     private void Update() {
-        print(currentTotals);
-        print(throws);
+        //print(currentTotals);
+        //print(throws);
         for (int i = 0; i < throws.Count; i++) {
             var t = throws[i];
-            if (i > panels.Count) {
+            if (i > panels.Count-1) {
                 var a = Instantiate(panelPrefab, transform);
-                var r = a.GetComponent<RectTransform>().rect;
-                r.position = new Vector2(-900 + 200 * i, 150);
+                var r = a.GetComponent<RectTransform>();
+                r.anchoredPosition = new Vector3(-900 + 200 * i, -200, 0);
                 panels.Add(a.GetComponent<PanelScript>());
             }
 
