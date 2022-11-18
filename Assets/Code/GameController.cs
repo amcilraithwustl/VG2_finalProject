@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour {
     public int totalRound = 10;
 
     public int currentTier { get; private set; }
-    
+
     //Audio
     private GlobalAudioController globalAudioController;
     private BGMAudioController bgmAudioController;
@@ -56,7 +56,7 @@ public class GameController : MonoBehaviour {
         pins = new List<GameObject>();
         resetPins();
         updateTier();
-        
+
         //Audio
         globalAudioController = FindObjectOfType(typeof(GlobalAudioController)) as GlobalAudioController;
         bgmAudioController = FindObjectOfType(typeof(BGMAudioController)) as BGMAudioController;
@@ -249,8 +249,7 @@ public class GameController : MonoBehaviour {
             print(v.ToSeparatedString(", "));
         }
 
-        Debug.Log(record.ToSeparatedString(", "));
-        /*var newRecord = recalculateRecord();
+        var newRecord = recalculateRecord();
         scorePanel.throws = record;
         scorePanel.currentTotals = newRecord;
         print("Record2");
@@ -264,7 +263,7 @@ public class GameController : MonoBehaviour {
         updateDisplay("ShotScore: \n" + numPinsFallen() + "Record: \n" + str);
 
 
-        // One Round end
+// One Round end
         if (shotsLeft == 0) {
             shotsLeft = totalShots;
             resetPins();
@@ -274,9 +273,8 @@ public class GameController : MonoBehaviour {
         }
 
         unlockBarrier();
-        
-        UpdateUIScore();
 
+        UpdateUIScore();
     }
 
     public void UpdateUIScore() {
@@ -295,7 +293,7 @@ public class GameController : MonoBehaviour {
     void Update() {
         updateTier();
 
-        //Debug.Log(score);
-        //_textMeshPro.text = "score: " + score;
+//Debug.Log(score);
+//_textMeshPro.text = "score: " + score;
     }
 }

@@ -38,7 +38,7 @@ Transform:
   - {fileID: 4796084102432991697}
   - {fileID: 8444192635607926121}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7531818149227492278
 GameObject:
@@ -996,7 +996,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1171
+  m_VersionIndex: 1177
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1340,7 +1340,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3530
+  m_VersionIndex: 3536
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1890,7 +1890,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2828
+  m_VersionIndex: 2834
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2036,6 +2036,7 @@ MonoBehaviour:
   _textMeshPro: {fileID: 0}
   mainMenuText: {fileID: 0}
   timeout: 6
+  scorePanel: {fileID: 8444192634592762740}
   totalShots: 2
   currentlyGrabbed: 0
   totalRound: 10
@@ -2190,72 +2191,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 4451789505908408795}
     m_Modifications:
-    - target: {fileID: 171545985, guid: 2303ab09cc8fd63458138880da3493d9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 171564582, guid: 2303ab09cc8fd63458138880da3493d9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 171564582, guid: 2303ab09cc8fd63458138880da3493d9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 171564582, guid: 2303ab09cc8fd63458138880da3493d9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8444192633651280556}
-    - target: {fileID: 171564582, guid: 2303ab09cc8fd63458138880da3493d9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 171564582, guid: 2303ab09cc8fd63458138880da3493d9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RestartGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 171564582, guid: 2303ab09cc8fd63458138880da3493d9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UIController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1190665416, guid: 2303ab09cc8fd63458138880da3493d9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1190665417, guid: 2303ab09cc8fd63458138880da3493d9, type: 3}
-      propertyPath: m_RaycastTriggerInteraction
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5049738603961900481, guid: 2303ab09cc8fd63458138880da3493d9,
-        type: 3}
-      propertyPath: m_ValidColorGradient.key0.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5049738603961900481, guid: 2303ab09cc8fd63458138880da3493d9,
-        type: 3}
-      propertyPath: m_ValidColorGradient.key0.g
-      value: 0.13366318
-      objectReference: {fileID: 0}
-    - target: {fileID: 5049738603961900481, guid: 2303ab09cc8fd63458138880da3493d9,
-        type: 3}
-      propertyPath: m_ValidColorGradient.key0.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5420709515345805641, guid: 2303ab09cc8fd63458138880da3493d9,
-        type: 3}
-      propertyPath: m_ValidColorGradient.key0.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5420709515345805641, guid: 2303ab09cc8fd63458138880da3493d9,
-        type: 3}
-      propertyPath: m_ValidColorGradient.key0.g
-      value: 0.13366318
-      objectReference: {fileID: 0}
-    - target: {fileID: 5420709515345805641, guid: 2303ab09cc8fd63458138880da3493d9,
-        type: 3}
-      propertyPath: m_ValidColorGradient.key0.r
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6501533634141770079, guid: 2303ab09cc8fd63458138880da3493d9,
         type: 3}
       propertyPath: m_Name
@@ -2325,15 +2260,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8444192634319417349}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8444192633651280556 stripped
+--- !u!114 &8444192634592762740 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 676661929, guid: 2303ab09cc8fd63458138880da3493d9,
+  m_CorrespondingSourceObject: {fileID: 273361777, guid: 2303ab09cc8fd63458138880da3493d9,
     type: 3}
   m_PrefabInstance: {fileID: 8444192634319417349}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38f8d0050e8ba444695bc5d4b0222ef2, type: 3}
+  m_Script: {fileID: 11500000, guid: a5c9855371aa7c8428bf0c1bd2ffab66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
