@@ -16,7 +16,8 @@ public class GameController : MonoBehaviour {
     public TMP_Text _textMeshPro;
     public TMP_Text mainMenuText;
     public float timeout = 3.0f;
-
+    public GameObject endScreen;
+    
     public ScorePanel scorePanel;
 
     //TODO: outdated. Do during update?
@@ -66,18 +67,26 @@ public class GameController : MonoBehaviour {
         //_textMeshPro.text = "Welcome" + " shots left: " + shots;
     }
 
-    private void updateTier() {
+    private void updateTier()
+    {
         //Get all game objects with bowlable
         var objs = FindObjectsOfType<Bowlable>();
         //set tier to lowest current bowlable value
         int tier = Int32.MaxValue;
-        foreach (var bowlable in objs) {
-            if (bowlable.hasTier && tier > bowlable.tier) {
+        foreach (var bowlable in objs)
+        {
+            if (bowlable.hasTier && tier > bowlable.tier)
+            {
                 tier = bowlable.tier;
             }
         }
 
-        //Alternately, we could use trigger "setGrabbable" on all relevant objects.
+        if (objs.Length == 0)
+        {
+            endScreen.SetActive(true);
+        }
+
+    //Alternately, we could use trigger "setGrabbable" on all relevant objects.
         //However, this could make for more confusing code to maintain, albeit with better performance.
         // Debug.Log("currentTier" + tier + " " + objs.Length);
         currentTier = tier;
