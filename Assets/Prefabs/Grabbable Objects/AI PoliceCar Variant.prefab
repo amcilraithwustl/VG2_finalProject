@@ -35,7 +35,7 @@ Transform:
   m_Children:
   - {fileID: 120860732793899312}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &508411696924001930
 Rigidbody:
@@ -184,7 +184,7 @@ MonoBehaviour:
   isGrabbed: 0
   hasTier: 1
   startStatic: 1
-  tier: 1
+  tier: 5
   shrink: 0.5
   shrinkSpeedFactor: 3
   hasBeenGrabbed: 0
@@ -323,7 +323,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 785511579646497674}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -23.37, y: 0, z: 3.56}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -376,7 +376,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
