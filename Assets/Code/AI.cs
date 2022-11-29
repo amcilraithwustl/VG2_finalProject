@@ -47,7 +47,8 @@ public class AI : MonoBehaviour
                 //GetComponent<Renderer>().material.color = Color.white;
             }
         }
-        if (target) {
+        if (target && navAgent.enabled) {
+            
             navAgent.SetDestination(target.position);
         }
 

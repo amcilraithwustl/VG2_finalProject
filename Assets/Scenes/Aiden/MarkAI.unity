@@ -728,28 +728,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!1 &617537418 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 785511579646497674, guid: 27c7eec5724ca1146a94139393c14b4b,
-    type: 3}
-  m_PrefabInstance: {fileID: 924524501}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &617537422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 617537418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05561d8d58830074f8330d856dd30c6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  patroRoute: {fileID: 979525827}
-  priorityTarget: {fileID: 0}
-  chaseDistance: 0
-  target: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,6 +995,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 617537422, guid: 27c7eec5724ca1146a94139393c14b4b, type: 3}
+      propertyPath: patroRoute
+      value: 
+      objectReference: {fileID: 979525827}
     - target: {fileID: 508411696924001924, guid: 27c7eec5724ca1146a94139393c14b4b,
         type: 3}
       propertyPath: m_Name

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.XR.Interaction.Toolkit;
 using GizmoUtility = UnityEditor.Rendering.GizmoUtility;
 
@@ -13,6 +14,7 @@ public class Bowlable : MonoBehaviour {
     private Rigidbody rb;
     private Transform trans;
 
+    private NavMeshAgent agent;
     //Config
     public bool isGrabbable = true;
     public bool isGrabbed = false;
@@ -33,6 +35,7 @@ public class Bowlable : MonoBehaviour {
 
         rb = GetComponent<Rigidbody>();
         trans = GetComponent<Transform>();
+        agent =GetComponentInChildren<NavMeshAgent>();
     }
 
     void HandleSelected(SelectEnterEventArgs args) {
@@ -57,7 +60,7 @@ public class Bowlable : MonoBehaviour {
     void Update() {
         //If it has start static and it hasn't been grabbed, physics won't start
         rb.isKinematic = startStatic && !hasBeenGrabbed;
-
+        
         //If it has been grabbed before, the size will scale to fit the bowling alley
         if (hasBeenGrabbed) {
             //Scale each dimension separately for smooth locomotion
@@ -68,6 +71,8 @@ public class Bowlable : MonoBehaviour {
                 calcScaleDelta(scale.z, shrink)
             );
             trans.localScale = scale;
+
+            if(agent) agent.enabled = false;
         }
 
 

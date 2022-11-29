@@ -260,7 +260,7 @@ public class GameController : MonoBehaviour {
             print(v.ToString());
         }
 
-        updateDisplay("ShotScore: \n" + numPinsFallen() + "Record: \n" + str);
+        //updateDisplay("ShotScore: \n" + numPinsFallen() + "Record: \n" + str);
 
 
 // One Round end
@@ -287,7 +287,7 @@ public class GameController : MonoBehaviour {
         }
 
         print(totalScore);
-        updateDisplay(disp + ": " + Convert.ToString(totalScore));
+       // updateDisplay(disp + ": " + Convert.ToString(totalScore));
     }
 
     void Update() {
