@@ -13,7 +13,7 @@ public class UIController : MonoBehaviour
     public InputActionProperty showButton;
     public Transform head;
     public float spawnDistance = 2;
-
+    public float lagFactor = .5f;
     private void Update()
     {
         if(showButton.action.WasPressedThisFrame())
@@ -21,9 +21,11 @@ public class UIController : MonoBehaviour
             print("SHOWING MENU");
             menu.SetActive(!menu.activeSelf);
         }
-        //menu.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
-        //menu.transform.LookAt(new Vector3(head.position.x, menu.transform.position.y, head.position.z));
-        //menu.transform.forward *= -1;
+
+        var newPosition = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
+        menu.transform.position = Vector3.Lerp(menu.transform.position, newPosition, lagFactor * Time.deltaTime);
+        menu.transform.LookAt(new Vector3(head.position.x, menu.transform.position.y, head.position.z));
+        menu.transform.forward *= -1;
     }
 
     

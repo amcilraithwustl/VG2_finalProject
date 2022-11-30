@@ -13,6 +13,7 @@ public class Bowlable : MonoBehaviour {
     private XRGrabInteractable grabScript;
     private Rigidbody rb;
     private Transform trans;
+    private Collider[] col;
 
     private NavMeshAgent agent;
     //Config
@@ -24,6 +25,7 @@ public class Bowlable : MonoBehaviour {
     public float shrink = 1;
     public float shrinkSpeedFactor = 5;
 
+    public bool startWithoutCollider = false;
     //State
     public bool hasBeenGrabbed = false;
 
@@ -36,6 +38,7 @@ public class Bowlable : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         trans = GetComponent<Transform>();
         agent =GetComponentInChildren<NavMeshAgent>();
+        col = GetComponentsInChildren<Collider>();
     }
 
     void HandleSelected(SelectEnterEventArgs args) {
@@ -57,12 +60,14 @@ public class Bowlable : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         //If it has start static and it hasn't been grabbed, physics won't start
         rb.isKinematic = startStatic && !hasBeenGrabbed;
-        
+
         //If it has been grabbed before, the size will scale to fit the bowling alley
-        if (hasBeenGrabbed) {
+        if (hasBeenGrabbed)
+        {
             //Scale each dimension separately for smooth locomotion
             var scale = trans.localScale;
             scale += new Vector3(
@@ -72,13 +77,28 @@ public class Bowlable : MonoBehaviour {
             );
             trans.localScale = scale;
 
-            if(agent) agent.enabled = false;
+            if (agent) agent.enabled = false;
         }
 
 
         //Check if the tier is enabled (if relevant)
         var unlocked = !hasTier || tier <= GameController.Instance.currentTier;
 
+        if (false && !unlocked)
+        {
+            foreach (var c in col)
+            {
+
+                if (startWithoutCollider)
+                {
+                    c.enabled = startStatic && !hasBeenGrabbed;
+                }
+                else
+                {
+                    c.enabled = true;
+                }
+            }
+        }
 
         if (isGrabbed) {
             grabScript.enabled = true;
