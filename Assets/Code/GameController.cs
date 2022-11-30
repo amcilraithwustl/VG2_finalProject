@@ -34,6 +34,7 @@ public class GameController : MonoBehaviour {
 
     public int currentTier { get; private set; }
 
+    public MeshRenderer scoreZone;
     //Audio
     private GlobalAudioController globalAudioController;
     private BGMAudioController bgmAudioController;
@@ -150,10 +151,12 @@ public class GameController : MonoBehaviour {
 
     public void lockBarrier() {
         barrier.enabled = true;
+        scoreZone.enabled = true;
     }
 
     public void unlockBarrier() {
         barrier.enabled = false;
+        scoreZone.enabled = false;
     }
 
     public void recordScore() {
