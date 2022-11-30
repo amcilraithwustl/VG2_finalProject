@@ -23,9 +23,9 @@ public class UIController : MonoBehaviour
         }
 
         var newPosition = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
-        menu.transform.position = Vector3.Lerp(menu.transform.position, newPosition, lagFactor * Time.deltaTime);
-        menu.transform.LookAt(new Vector3(head.position.x, menu.transform.position.y, head.position.z));
-        menu.transform.forward *= -1;
+        transform.position = Vector3.Lerp(menu.transform.position, newPosition, lagFactor * Time.deltaTime);
+        transform.LookAt(new Vector3(head.position.x, menu.transform.position.y, head.position.z));
+        transform.forward *= -1;
     }
 
     
