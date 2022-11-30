@@ -38,7 +38,7 @@ public class BowlingBall : MonoBehaviour
      private void OnTriggerEnter(Collider other)
      {
         // print("TIRGGER");
-         if (!hasReleased && b.hasBeenGrabbed && other.gameObject.CompareTag("scorezone")) {
+         if (!hasReleased && b.hasBeenGrabbed && other.gameObject.CompareTag("scorezone") && !b.isGrabbed) {
              print("object entered the score zone, calling WaitForThrow");
              s.WaitForThrow(this.gameObject);
              hasReleased = true;

@@ -42,12 +42,23 @@ public class Bowlable : MonoBehaviour {
     }
 
     void HandleSelected(SelectEnterEventArgs args) {
-        print("Has Been Grabbed");
-        hasBeenGrabbed = true;
+       
         GameController.Instance.currentlyGrabbed++;
         isGrabbed = true;
-    }
+        
+        print("Has Been Grabbed");
+        hasBeenGrabbed = true;
+    // StartCoroutine(turnOnGrabbed());
+}
+    IEnumerator turnOnGrabbed()
+    {
+        yield return new WaitForSeconds(.1f);
+        print("Has Been Grabbed");
+        hasBeenGrabbed = true;
+        
+    } 
 
+  
     void HandleDropped(SelectExitEventArgs args) {
         print("Has Been Dropped");
         GameController.Instance.currentlyGrabbed--;

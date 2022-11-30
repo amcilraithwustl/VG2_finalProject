@@ -9301,6 +9301,11 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 62059083215974126, guid: 670824a1ee4c86649a6274e5301f30d9,
+        type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2340419191084191077, guid: 670824a1ee4c86649a6274e5301f30d9,
         type: 3}
       propertyPath: m_Volume
@@ -9310,6 +9315,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2968058076476695635, guid: 670824a1ee4c86649a6274e5301f30d9,
+        type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176823417246474638, guid: 670824a1ee4c86649a6274e5301f30d9,
+        type: 3}
+      propertyPath: m_AllowAnchorControl
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176823417246474638, guid: 670824a1ee4c86649a6274e5301f30d9,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4176823417246474638, guid: 670824a1ee4c86649a6274e5301f30d9,
         type: 3}
@@ -9487,6 +9507,16 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 289055780}
+    - target: {fileID: 8998625853973378045, guid: 670824a1ee4c86649a6274e5301f30d9,
+        type: 3}
+      propertyPath: m_AllowAnchorControl
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8998625853973378045, guid: 670824a1ee4c86649a6274e5301f30d9,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8998625853973378045, guid: 670824a1ee4c86649a6274e5301f30d9,
         type: 3}
       propertyPath: m_MaxRaycastDistance
